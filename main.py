@@ -29,6 +29,11 @@ def parallel_processing(n, m, data):
     return output
 
 
+    def print_grid(grid):
+        for j in range(len(grid[0])):
+            for i in range(len(grid)):
+                print(i, j)
+                print(grid[i][j])
 
 
 def main():
@@ -36,9 +41,10 @@ def main():
     data = list(map(int, input().split()))
 
     result = parallel_processing(n, m, data)
-
-    for thread_idx, start_time in result:
-        print(thread_idx, start_time)
+    
+    # for thread_idx, start_time in result:
+    #     print(thread_idx, start_time)
+    print_grid(n, m, result)
 
 
 
