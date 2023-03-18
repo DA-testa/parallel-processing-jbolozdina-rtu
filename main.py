@@ -5,7 +5,6 @@
 def parallel_processing(n, m, data):
     output = []
     threads = [(0, i) for i in range(n)]
-    threads.sort()
 
     for i in range(m):
         ti = data[i]
@@ -18,12 +17,13 @@ def parallel_processing(n, m, data):
             min_child = left_child
             if right_child < n and threads[right_child][0] < threads[left_child][0]:
                 min_child = right_child
-            if threads[min_child][0] < threads[j][0]:
+            if threads[min_child][0] < threads[j][0] or (threads[min_child][0] == threads[j][0] and threads[min_child][1] < threads[j][1]):
                 threads[j], threads[min_child] = threads[min_child], threads[j]
             else:
                 break
-                
+
     return output
+
 
 
 
